@@ -24,7 +24,6 @@ public class Main {
 //          eq.addItem("Sword");
 //         out.print(eq.toString());
 
-
         new Menu("main");
         new Map("drop");
         new Map("spawn");

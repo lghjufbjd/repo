@@ -18,32 +18,32 @@ public class Items {
         return name;
     }
 
-    public static String getRatity() {
-        return ratity;
-    }
-
     public static void setName(String name) {
         Items.name = name;
+    }
+
+    public static String getRatity() {
+        return ratity;
     }
 
     public static void setRatity(String ratity) {
         Items.ratity = ratity;
     }
 
-    public static void setHP(String HP) {
-        Items.HP = HP;
-    }
-
-    public static void setStrength(String strength) {
-        Items.strength = strength;
-    }
-
     public static String getHP() {
         return HP;
     }
 
+    public static void setHP(String HP) {
+        Items.HP = HP;
+    }
+
     public static String getStrength() {
         return strength;
+    }
+
+    public static void setStrength(String strength) {
+        Items.strength = strength;
     }
 
     public String toString() {

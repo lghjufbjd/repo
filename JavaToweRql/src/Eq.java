@@ -14,9 +14,13 @@ public class Eq {
     }
 
     public void addItem(String item) {
-        switch (item){
-            case "Sword":   eq.add(basicSword);break;
-            case "Test":   eq.add(basicItem);break;
+        switch (item) {
+            case "Sword":
+                eq.add(basicSword);
+                break;
+            case "Test":
+                eq.add(basicItem);
+                break;
         }
 
     }

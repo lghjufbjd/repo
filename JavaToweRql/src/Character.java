@@ -3,7 +3,8 @@ import java.util.Random;
 public class Character extends Entity {
 
     public static Character player;
-    private static String name;
+    private  String name;
+    Battle battle = new Battle();
     private int EXP; // experience points
     private int gold; // player money
     private double critChance; // critical chance
@@ -12,9 +13,20 @@ public class Character extends Entity {
     private int dexterity; // accuracy only for bow and spells
     private int intelligence; // spell damage
     private int evasion; // dodge attacks
+    private int lvl=1; // lvl
+    private int exp=100; // exp
     // armor parts
     private String helmet;
     private String chest;
+
+    public int getLvl() {
+        return lvl;
+    }
+
+    public void setLvl(int lvl) {
+        this.lvl = lvl;
+    }
+
     private String boots;
 
     public static Character chooseClass(String readclass) {
@@ -81,11 +93,11 @@ public class Character extends Entity {
     }
 
     public String getName() {
-        return name = "Nevar";
+        return name;
     }
 
-    public static void setName(String name) {
-        Character.name = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getDefense() {
@@ -108,12 +120,12 @@ public class Character extends Entity {
         return intelligence;
     }
 
+
+    ;
+
     public void setIntelligence(int inte) {
         this.intelligence = inte;
     }
-
-
-    ;
 
     public boolean isAlive() {
         int hp = Character.player.getHealth();
@@ -150,10 +162,12 @@ public class Character extends Entity {
             if (playerExp >= levelArray[playerLevel + 1]) {
                 a.setEXP(levelArray[playerLevel]);
             } else {
-                System.out.println("Level up!");
+                System.out.println(Map.color.YELLOW()+"Level up!"+Map.color.RESET());
                 a.setLevel(playerLevel + 1);
             }
         }
+        this.lvl=playerLevel;
+        this.exp=playerExp;
 
     }
 
@@ -172,8 +186,7 @@ public class Character extends Entity {
         int attackStrength = enemy.attack();
         int hp = (player.getHealth() > attackStrength) ? player.getHealth() - attackStrength : 0;
         Character.player.setHealth(hp);
-        System.out.printf("  " + getName() + " is hit for %d HP of damage (%s)\n", attackStrength,
-                getStatus());
+        System.out.printf("  " + getName() + " is hit for %d HP of damage (%s)\n", attackStrength, getStatus());
         if (hp == 0) {
             System.out.println("  " + getName() + " has been defeated");
         }

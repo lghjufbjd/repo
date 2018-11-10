@@ -1,6 +1,4 @@
 public class Monster extends Enemy {
-    private static String name;
-
     public Monster(String name, int hp, int str) {
 
         this.name = name;
@@ -17,15 +15,5 @@ public class Monster extends Enemy {
             this.setMaxHP(hp);
             this.setStrength(str);
         }
-
     }
-
-    public static String getName() {
-        return name;
-    }
-
-    public static void setName(String name) {
-        Monster.name = name;
-    }
-
 }

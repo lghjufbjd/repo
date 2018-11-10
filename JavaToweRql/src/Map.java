@@ -6,7 +6,7 @@ public class Map {
     public static ANSIcolors color = new ANSIcolors();
     private static int lastmoveRow = 0, lastmoveCol = 0;
     //0          1        2         3        4        5            / private static String[] state = new String[]{"|____|","█████", "|_ME_|"+color.RESET(),color.RED()+ "|_!!_|"+color.RESET(), color.PURPLE()+"|_BS_|"+color.RESET(), color.YELLOW()+"|_¿¿_|"+color.RESET()};
-    private static String[] state = new String[]{"|____|","█████", "|_"+color.BLUE()+"ME"+color.RESET()+"_|", "|_"+color.RED()+"!!"+color.RESET()+"_|", "|_"+color.PURPLE()+"BS"+color.RESET()+"_|", "|_"+color.YELLOW()+"¿¿"+color.RESET()+"_|"};
+    private static String[] state = new String[]{"|____|", "█████", "|_" + color.BLUE() + "ME" + color.RESET() + "_|", "|_" + color.RED() + "!!" + color.RESET() + "_|", "|_" + color.PURPLE() + "BS" + color.RESET() + "_|", "|_" + color.YELLOW() + "¿¿" + color.RESET() + "_|"};
 
     private static String[][] roomStates = new String[][]{
             {state[0], state[0], state[0], state[0]},
@@ -60,10 +60,14 @@ public class Map {
         int row = 0;
         while (row != 7) {
             for (int col = 0; col <= 4; col++) {
-                {drawmap(row, col);}
-            }    row++;
+                {
+                    drawmap(row, col);
+                }
+            }
+            row++;
         }
     }
+
     private void moveto(int row, int col) {
         Main.cls();
         roomStates[row][col] = state[2];
@@ -85,12 +89,12 @@ public class Map {
             Enemy.enemy = Enemy.chooseEnemy(3);
 
         } else if (roomStates[lastmoveRow][lastmoveCol] == state[5]) {
-             Random r = new Random();
+            Random r = new Random();
             Eq eq = new Eq();
-              eq.addItem("Sword");
-             moveto(lastmoveRow, lastmoveCol);
-             map();
-             Main.cls();
+            eq.addItem("Sword");
+            moveto(lastmoveRow, lastmoveCol);
+            map();
+            Main.cls();
             out.println("You got a nice looking sword");
 
         }

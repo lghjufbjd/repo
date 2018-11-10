@@ -28,10 +28,6 @@ public class Menu {
         switch (startup) {
             case "1":
                 Main.cls();
-                out.println(color.PURPLE() + "How you want to be called?" + color.RESET());
-                name = Main.getRead().nextLine();
-                Character.player.setName(name);
-                Main.cls();
                 out.println("┌─────────" + color.PURPLE() + "Menu" + color.RESET() + "─────────┐");
                 out.println("│ 1.Warior             │");
                 out.println("│ 2.Ranger             │");
@@ -42,6 +38,10 @@ public class Menu {
                 String readclass = Main.getRead().nextLine();
                 Character.player = Character.chooseClass(readclass);
                 Enemy.enemy = Enemy.chooseEnemy(1);
+                Main.cls();
+                Main.cls();
+                out.println(color.PURPLE() + "How you want to be called?" + color.RESET());
+                Character.player.setName(Main.getRead().nextLine());
                 Main.cls();
                 Map map = new Map();
                 map.map(); //spawn
