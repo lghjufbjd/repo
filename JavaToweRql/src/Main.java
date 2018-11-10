@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
         cls();
         Eq eq = new Eq();
-         eq.addItem("basicSword");
+         eq.addItem("Sword");
         eq.toString();
         //  new Map("drop");
       //  new Map("spawn");
