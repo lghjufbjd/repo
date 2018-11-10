@@ -1,21 +1,52 @@
 public class Items {
     private static String name;
-    private static int ratity;
-    private int HP;
-    private int strength;
+    private static String ratity;
+    private static String HP;
+    private static String strength;
+
+    public Items() {
+    }
+
+    public Items(String name, String rarity, String str, String HP) {
+        this.name = name;
+        this.ratity = rarity;
+        this.HP = HP;
+        this.strength = str;
+    }
+
     public static String getName() {
         return name;
     }
-    public Items() {
+
+    public static String getRatity() {
+        return ratity;
     }
-    public Items(String name, int rarity, int str, int hp) {
-        this.name =name;
-    this.ratity=  rarity;
-     this.HP=str;
-        this.strength=str;
+
+    public static void setName(String name) {
+        Items.name = name;
     }
-    @Override
+
+    public static void setRatity(String ratity) {
+        Items.ratity = ratity;
+    }
+
+    public static void setHP(String HP) {
+        Items.HP = HP;
+    }
+
+    public static void setStrength(String strength) {
+        Items.strength = strength;
+    }
+
+    public static String getHP() {
+        return HP;
+    }
+
+    public static String getStrength() {
+        return strength;
+    }
+
     public String toString() {
-        return "Nazwa: "+name +" statystyki: \n"+ " rarity: "+ratity+" HP= " + HP + ", strength= " + strength;
+        return "Nazwa: " + name + "\nstatystyki:" + "\n* rarity:" + ratity + "\n* HP:" + HP + "\n* strength:" + strength;
     }
 }

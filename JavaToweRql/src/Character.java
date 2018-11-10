@@ -2,36 +2,13 @@ import java.util.Random;
 
 public class Character extends Entity {
 
-    private static String name;
-
-    public static void setName(String name) {
-        Character.name = name;
-    }
-
     public static Character player;
+    private static String name;
     private int EXP; // experience points
     private int gold; // player money
     private double critChance; // critical chance
     private int strength; // attack damage
     private int defense; // reduce taken damage
-    @Override
-    public String toString() {
-        return name;
-//        return "Character{" +
-//                "EXP=" + EXP +
-//                ", gold=" + gold +
-//                ", critChance=" + critChance +
-//                ", strength=" + strength +
-//                ", defense=" + defense +
-//                ", dexterity=" + dexterity +
-//                ", intelligence=" + intelligence +
-//                ", evasion=" + evasion +
-//                ", helmet='" + helmet + '\'' +
-//                ", chest='" + chest + '\'' +
-//                ", boots='" + boots + '\'' +
-//                '}';
-    }
-
     private int dexterity; // accuracy only for bow and spells
     private int intelligence; // spell damage
     private int evasion; // dodge attacks
@@ -51,6 +28,24 @@ public class Character extends Entity {
                 System.out.println("Error that play doesnt exist!");
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+//        return "Character{" +
+//                "EXP=" + EXP +
+//                ", gold=" + gold +
+//                ", critChance=" + critChance +
+//                ", strength=" + strength +
+//                ", defense=" + defense +
+//                ", dexterity=" + dexterity +
+//                ", intelligence=" + intelligence +
+//                ", evasion=" + evasion +
+//                ", helmet='" + helmet + '\'' +
+//                ", chest='" + chest + '\'' +
+//                ", boots='" + boots + '\'' +
+//                '}';
     }
 
     public int getEXP() {
@@ -81,12 +76,16 @@ public class Character extends Entity {
         return strength;
     }
 
-    public String getName() {
-        return name="Nevar";
-    }
-
     public void setStrength(int str) {
         this.strength = str;
+    }
+
+    public String getName() {
+        return name = "Nevar";
+    }
+
+    public static void setName(String name) {
+        Character.name = name;
     }
 
     public int getDefense() {
@@ -129,7 +128,7 @@ public class Character extends Entity {
         // System.out.println();
 
         //   System.out.println(" vs: ");
-        String starus=" HP:" + getHealth() + "/" + getMaxHP();
+        String starus = " HP:" + getHealth() + "/" + getMaxHP();
         return starus;
     }
 
@@ -168,6 +167,7 @@ public class Character extends Entity {
         Random rand = new Random();
         return rand.nextInt(Character.player.getDamage() * Character.player.getStrength() + 1) / 2;
     }
+
     public void defend(Enemy enemy) {
         int attackStrength = enemy.attack();
         int hp = (player.getHealth() > attackStrength) ? player.getHealth() - attackStrength : 0;

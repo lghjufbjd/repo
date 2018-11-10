@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Enemy extends Entity {
     public static Enemy enemy;
+    String name = "example name";
     private int HP;
     private int MaxHP;
     private int strength;
@@ -9,7 +10,7 @@ public class Enemy extends Entity {
     public static Enemy chooseEnemy(int enemy) {
         Monster rat = new Monster("rat", 20, 1);
         Monster zombie = new Monster("zombie", 40, 1);
-        Monster dragon = new Monster("Dragon", 100, 2,true);
+        Monster dragon = new Monster("Dragon", 100, 2, true);
 
         String s = String.valueOf(enemy);
         String char_type = s;
@@ -19,19 +20,19 @@ public class Enemy extends Entity {
                 return rat;
             }
             case "2": {
-                Monster.setName("Zombie");
+                Monster.setName("zombie");
                 return zombie;
             }
-            case "3":
-            { Monster.setName("Dragon");
+            case "3": {
+                Monster.setName("Dragon");
                 return dragon;
             }
             default:
-                System.out.println("Error that play doesnt exist!");
+                System.out.println("Error wrong enemy");
         }
         return null;
     }
-    String name="example name";
+
     public int getHealth() {
         return HP;
     }
@@ -72,7 +73,6 @@ public class Enemy extends Entity {
         }
 
     }
-
 
 
     String getDescription() {
