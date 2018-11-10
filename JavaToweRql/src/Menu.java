@@ -32,7 +32,7 @@ public class Menu {
                 name = Main.getRead().nextLine();
                 Character.player.setName(name);
                 Main.cls();
-                out.println("┌─────────" + color.PURPLE() + "Menu" + color.PURPLE() + "─────────┐");
+                out.println("┌─────────" + color.PURPLE() + "Menu" + color.RESET() + "─────────┐");
                 out.println("│ 1.Warior             │");
                 out.println("│ 2.Ranger             │");
                 out.println("│ 3.LOCKED             │");
