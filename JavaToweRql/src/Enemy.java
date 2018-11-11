@@ -2,23 +2,14 @@ import java.util.Random;
 
 public class Enemy extends Entity {
     public static Enemy enemy;
+
     public String name = "example name";
     Battle battle = new Battle();
     private int HP;
     private int MaxHP;
     private int strength;
-
-    public String getName() {
-        if (enemy==rat)
-            return "rat";
-        else if (enemy==zombie)
-            return "zombie";
-        else if (enemy==dragon)
-            return "dragon";
-        return null;
-    }
-    public static Monster rat    = new Monster("rat", 20, 1);
-    public static  Monster zombie = new Monster("zombie", 40, 1);
+    public static Monster rat = new Monster("rat", 20, 1);
+    public static Monster zombie = new Monster("zombie", 40, 1);
     public static Monster dragon = new Monster("Dragon", 100, 2, true);
     public static Enemy chooseEnemy(int enemy) {
 
@@ -42,6 +33,16 @@ public class Enemy extends Entity {
         return null;
     }
 
+    public String getName() {
+        if (enemy == rat)
+            return "rat";
+        else if (enemy == zombie)
+            return "zombie";
+        else if (enemy == dragon)
+            return "dragon";
+        return null;
+    }
+
     public int getHealth() {
         return HP;
     }
@@ -62,21 +63,14 @@ public class Enemy extends Entity {
         return strength;
     }
 
-    ;
-
     public void setStrength(int str) {
         this.strength = str;
     }
 
 
-
     public boolean isAlive() {
         int hp = Enemy.enemy.getHealth();
-        if (hp > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return hp > 0;
 
     }
 
@@ -102,13 +96,15 @@ public class Enemy extends Entity {
         System.out.printf("  %s hit %s for %d hp (%s)\n", player.getName(), enemy.getName(), attackStrength, getStatus());
         if (hp == 0) {
             player.setGold(player.getGold() + 10);
-            System.out.println("  " + Character.player.getName() + " defeat " + enemy.getName()
-                    + " and get 10 pices of gold\n You have already: " + player.getGold());
-
-            player.setEXP(player.getEXP()+100);
-            player.checkLevel(Character.player.getEXP(), Character.player.getLevel(),Character.player);
+            System.out.println("  " + Character.player.getName() + " defeat " + enemy.getName() + " and get 10 pices of gold\n You have already: " + player.getGold());
+            if (Enemy.enemy.getName().equals("dragon")) {
+                player.setEXP(player.getEXP() + 100);
+            } else {
+                player.setEXP(player.getEXP() + 50);
+            }
+            player.checkLevel(Character.player.getEXP(), Character.player.getLevel(), Character.player);
             System.out.println("click any key to continue");
-            String anykey = Main.getRead().nextLine();
+            Main.getRead().nextLine();
 
         }
 

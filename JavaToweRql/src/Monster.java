@@ -1,4 +1,4 @@
-public class Monster extends Enemy {
+ class Monster extends Enemy {
     public Monster(String name, int hp, int str) {
 
         this.name = name;
@@ -8,9 +8,9 @@ public class Monster extends Enemy {
 
     }
 
+
     public Monster(String name, int hp, int str, boolean isBoss) {
-        if (isBoss == true) {
-            name = "d";
+        if (isBoss) {
             this.setHealth(hp);
             this.setMaxHP(hp);
             this.setStrength(str);

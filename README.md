@@ -1,2 +1,2 @@
-# JavaToweRql
-Rql w konsoli 
+# repo
+essa

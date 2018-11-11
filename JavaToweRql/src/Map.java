@@ -55,7 +55,6 @@ public class Map {
         }
     }
 
-
     public static void map() {
         int row = 0;
         while (row != 7) {
@@ -74,38 +73,46 @@ public class Map {
     }
 
     private void checkEvent() {
-        if (roomStates[lastmoveRow][lastmoveCol] == state[3]) {
+        if (roomStates[lastmoveRow][lastmoveCol].equals(state[3])) {
+            Random r = new Random();
+            Enemy.enemy = Enemy.chooseEnemy((Math.abs(r.nextInt()) % 2) + 1);
             Enemy.enemy.setHealth(Enemy.enemy.getMaxHP());
             moveto(lastmoveRow, lastmoveCol);
             map();
-            Battle battle = new Battle(Character.player, Enemy.enemy);
-        } else if (roomStates[lastmoveRow][lastmoveCol] == state[4]) {
+            new Battle(Character.player, Enemy.enemy);
+        } else if (roomStates[lastmoveRow][lastmoveCol].equals(state[4]) ) {
             Random r = new Random();
             Enemy.enemy = Enemy.chooseEnemy(3);
             Enemy.enemy.setHealth(Enemy.enemy.getMaxHP());
             moveto(lastmoveRow, lastmoveCol);
             map();
-            Battle battle = new Battle(Character.player, Enemy.enemy);
-            Enemy.enemy = Enemy.chooseEnemy(3);
+             new Battle(Character.player, Enemy.enemy);
 
-        } else if (roomStates[lastmoveRow][lastmoveCol] == state[5]) {
+        } else if (roomStates[lastmoveRow][lastmoveCol].equals(state[5]) ) {
             Random r = new Random();
             Eq eq = new Eq();
-            eq.addItem("Sword");
+            eq.addItem("sword");
             moveto(lastmoveRow, lastmoveCol);
             map();
-            Main.cls();
-            out.println("You got a nice looking sword");
-
         }
     }
 
     private void moveTemplate(String direction) {
         int row = lastmoveRow, col = lastmoveCol;
-        if (direction.equals("up")) row = lastmoveRow - 1;
-        else if (direction.equals("down")) row = lastmoveRow + 1;
-        else if (direction.equals("right")) col = lastmoveCol + 1;
-        else if (direction.equals("left")) col = lastmoveCol - 1;
+        switch (direction) {
+            case "up":
+                row = lastmoveRow - 1;
+                break;
+            case "down":
+                row = lastmoveRow + 1;
+                break;
+            case "right":
+                col = lastmoveCol + 1;
+                break;
+            case "left":
+                col = lastmoveCol - 1;
+                break;
+        }
         roomStates[lastmoveRow][lastmoveCol] = state[0];
         lastmoveRow = row;
         lastmoveCol = col;
@@ -145,10 +152,15 @@ public class Map {
         }
     }
 
+
     private void contoller() {
         while (true) {
-            out.println("\n" + "Where do you want to move?\n\n" + "           1⇧" + "\n         2⇦   3⇨" + "\n           4⇩");
+            out.println("\n" + "Where do you want to do?\n5.Show eq\n6.Show stats\n\n" + "           1⇧" + "\n         2⇦   3⇨" + "\n           4⇩");
             String choice = Main.getRead().nextLine();
+            if (choice.equals("5")){
+                Eq eq=new Eq();
+                System.out.println(eq.toString());
+            }else if (choice.equals("6")){System.out.println(Character.player.getStats());}
             move(choice);
         }
     }
@@ -157,29 +169,38 @@ public class Map {
         Random r = new Random();
         int whenemy = 1, whtsure = 1, whnxfrl = 1, wh = 0;
         String tp = "";
-        if (type.equals("enemy")) {
-            tp = state[3];
-            wh = whenemy;
-        } else if (type.equals("tsure")) {
-            tp = state[5];
-            wh = whtsure;
-        } else if (type.equals("nxflr")) {
-            tp = state[4];
-            wh = whnxfrl;
+        switch (type) {
+            case "enemy":
+                tp = state[3];
+                wh = whenemy;
+                break;
+            case "tsure":
+                tp = state[5];
+                wh = whtsure;
+                break;
+            case "nxflr":
+                tp = state[4];
+                wh = whnxfrl;
+                break;
         }
         while (wh <= rndTo) {
             int rndRow = Math.abs(r.nextInt()) % 7;
             int rndCol = Math.abs(r.nextInt()) % 4;
-            if (roomStates[rndRow][rndCol] != state[2]) {
+            if (!roomStates[rndRow][rndCol].equals(state[2])) {
                 roomStates[rndRow][rndCol] = tp;
                 wh++;
             }
-            if (type.equals("enemy"))
-                whenemy++;
-            else if (type.equals("tsure"))
-                whtsure++;
-            else if (type.equals("nxflr"))
-                whnxfrl++;
+            switch (type) {
+                case "enemy":
+                    whenemy++;
+                    break;
+                case "tsure":
+                    whtsure++;
+                    break;
+                case "nxflr":
+                    whnxfrl++;
+                    break;
+            }
         }
     }
 

@@ -19,11 +19,6 @@ public class Main {
 
     public static void main(String[] args) {
         cls();
-//         Eq eq = new Eq();
-//          eq.addItem("Test");
-//          eq.addItem("Sword");
-//         out.print(eq.toString());
-
         new Menu("main");
         new Map("drop");
         new Map("spawn");

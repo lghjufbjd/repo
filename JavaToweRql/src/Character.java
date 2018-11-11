@@ -3,8 +3,8 @@ import java.util.Random;
 public class Character extends Entity {
 
     public static Character player;
-    private  String name;
     Battle battle = new Battle();
+    private String name;
     private int EXP; // experience points
     private int gold; // player money
     private double critChance; // critical chance
@@ -13,20 +13,11 @@ public class Character extends Entity {
     private int dexterity; // accuracy only for bow and spells
     private int intelligence; // spell damage
     private int evasion; // dodge attacks
-    private int lvl=1; // lvl
-    private int exp=100; // exp
+    private int lvl = 1; // lvl
+    private int exp = 100; // exp
     // armor parts
     private String helmet;
     private String chest;
-
-    public int getLvl() {
-        return lvl;
-    }
-
-    public void setLvl(int lvl) {
-        this.lvl = lvl;
-    }
-
     private String boots;
 
     public static Character chooseClass(String readclass) {
@@ -42,26 +33,39 @@ public class Character extends Entity {
         return null;
     }
 
+    public int getLvl() {
+        return lvl;
+    }
+
+    public void setLvl(int lvl) {
+        this.lvl = lvl;
+    }
+
     @Override
     public String toString() {
         return name;
-//        return "Character{" +
-//                "EXP=" + EXP +
-//                ", gold=" + gold +
-//                ", critChance=" + critChance +
-//                ", strength=" + strength +
-//                ", defense=" + defense +
-//                ", dexterity=" + dexterity +
-//                ", intelligence=" + intelligence +
-//                ", evasion=" + evasion +
-//                ", helmet='" + helmet + '\'' +
-//                ", chest='" + chest + '\'' +
-//                ", boots='" + boots + '\'' +
-//                '}';
     }
+
+
 
     public int getEXP() {
         return EXP;
+    }
+    public String getStats() {
+                return player.toString()+": {" +
+                "EXP=" + EXP +
+                ", level='" + lvl +
+                ", gold=" + gold +
+                ", critChance=" + critChance +
+                ", strength=" + strength +
+                ", defense=" + defense +
+                ", dexterity=" + dexterity +
+                ", intelligence=" + intelligence +
+                ", evasion=" + evasion +
+                ", helmet='" + helmet + '\'' +
+                ", chest='" + chest + '\'' +
+                ", boots='" + boots + '\'' +
+                '}';
     }
 
     public void setEXP(int exp) {
@@ -121,18 +125,13 @@ public class Character extends Entity {
     }
 
 
-    ;
-
     public void setIntelligence(int inte) {
         this.intelligence = inte;
     }
 
     public boolean isAlive() {
         int hp = Character.player.getHealth();
-        if (hp > 0)
-            return true;
-        else
-            return false;
+        return hp > 0;
     }
 
     public String getStatus() {
@@ -149,7 +148,6 @@ public class Character extends Entity {
     }
 
     public void setEvasion(int eva) {
-        this.evasion = evasion;
     }
 
     public void checkLevel(int playerExp, int playerLevel, Character a) {
@@ -162,12 +160,12 @@ public class Character extends Entity {
             if (playerExp >= levelArray[playerLevel + 1]) {
                 a.setEXP(levelArray[playerLevel]);
             } else {
-                System.out.println(Map.color.YELLOW()+"Level up!"+Map.color.RESET());
+                System.out.println(Map.color.YELLOW() + "Level up!" + Map.color.RESET());
                 a.setLevel(playerLevel + 1);
             }
         }
-        this.lvl=playerLevel;
-        this.exp=playerExp;
+        this.lvl = playerLevel;
+        this.exp = playerExp;
 
     }
 

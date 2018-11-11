@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Battle {
-    public static Scanner read = new Scanner(System.in);
-    public static ANSIcolors color = new ANSIcolors();
+    private static Scanner read = new Scanner(System.in);
+    private static ANSIcolors color = new ANSIcolors();
 
     public Battle() {
     }
@@ -14,17 +14,16 @@ public class Battle {
         System.out.print(player.getStatus() + " vs");
         System.out.println(enemy.getStatus());
         while (player.isAlive() && enemy.isAlive()) {
-
-             hpBar(1);
-             hpBar(2);
-
+            hpBar(1);
+            hpBar(2);
+            System.out.println();
             System.out.print("\nAttack (a) or use potion (h)? ");
             String action = read.nextLine();
             if (action.equals("h")) {
-                if (Eq.eq.contains("potion")) {
+                if (Eq.eq.contains(Eq.potion)) {
                     if (Character.player.getHealth() < Character.player.getMaxHP() - 20) {
                         player.heal();
-                        Eq.eq.remove("potion");
+                        Eq.eq.remove(Eq.potion);
                     } else System.out.println("you have enough HP points");
                 } else System.out.println("u dont have any potions!");
 
@@ -32,8 +31,7 @@ public class Battle {
                 enemy.defend(player);
             }
             if (enemy.isAlive()) {
-                player.defend(enemy);Main.cls();
-                Map.map();
+                player.defend(enemy);
 
             }
         }

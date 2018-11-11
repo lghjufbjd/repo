@@ -43,8 +43,8 @@ public class Menu {
                 out.println(color.PURPLE() + "How you want to be called?" + color.RESET());
                 Character.player.setName(Main.getRead().nextLine());
                 Main.cls();
-                Map map = new Map();
-                map.map(); //spawn
+                new Map();
+                Map.map(); //spawn
                 new Map("controler");
                 break;
         }

@@ -8,10 +8,10 @@ public class Items {
     }
 
     public Items(String name, String rarity, String str, String HP) {
-        this.name = name;
-        this.ratity = rarity;
-        this.HP = HP;
-        this.strength = str;
+        Items.name = name;
+        Items.ratity = rarity;
+        Items.HP = HP;
+        Items.strength = str;
     }
 
     public static String getName() {
@@ -47,6 +47,6 @@ public class Items {
     }
 
     public String toString() {
-        return "Nazwa: " + name + "\nstatystyki:" + "\n* rarity:" + ratity + "\n* HP:" + HP + "\n* strength:" + strength;
+        return "Nazwa: " + name + "\nstatystyki:" + "\n* rarity:" + ratity + "\n* HP:" + HP + "\n* strength:" + strength+"\n";
     }
 }
